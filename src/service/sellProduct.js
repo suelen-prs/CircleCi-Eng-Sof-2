@@ -8,6 +8,11 @@
 
 
 export default function sellProduct(product, amount){
-    product.stock -= amount
-    return product
+    if((product.stock -= amount) < 0){
+        product.stock += amount
+        return 'produto em falta'
+    }else{
+        return product
+    }  
 }
+
